@@ -21,11 +21,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
+        android:layout_width="match_parent"
+        android:layout_height="93dp"
+        app:srcCompat="@drawable/calendar"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true" />
 
 
 </RelativeLayout>
