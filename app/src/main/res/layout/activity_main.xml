@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@android:color/white">
+    android:background="@color/colorBackground">
 
 
     <ImageButton
@@ -14,7 +14,7 @@
         android:layout_height="58dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@android:color/white"
+        android:background="@color/colorBackground"
         android:onClick="Odfot"
         app:srcCompat="@android:drawable/ic_input_add"
         android:contentDescription="button opening camera" />
