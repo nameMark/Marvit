@@ -39,13 +39,13 @@ public class MainActivity extends AppCompatActivity {
         scannerView.startCamera();
 
 
-
     }
 
     @Override
     public void onPause(){
+        scannerView = new ZXingScannerView(this);
         super.onPause();
-        scannerView.stopCamera();
+        scannerView.startCamera();
     }
 
 
