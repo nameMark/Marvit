@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public  void Odfot (View v) {
+    public  void scanCode (View v) {
         scannerView = new ZXingScannerView(this);
         scannerView.setResultHandler(new ZXingScannerResultHandler());
 
@@ -43,11 +43,30 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onPause(){
-        scannerView = new ZXingScannerView(this);
         super.onPause();
-        scannerView.startCamera();
+        scannerView.stopCamera();
     }
 
+
+    class ZXingScannerResultHandler implements ZXingScannerView.ResultHandler{
+
+        @Override
+        public void handleResult(com.google.zxing.Result result) {
+            String resultCodeString = result.getText();
+            long resultCode = Long.parseLong(resultCodeString);
+            long liner = 884851041913L;
+            if (resultCode == liner){
+                Toast.makeText(MainActivity.this, "prave si naskenoval liner", Toast.LENGTH_LONG).show();
+                openMainActivity2();
+            }else{
+                Toast.makeText(MainActivity.this, "neurcene", Toast.LENGTH_SHORT).show();
+            }
+
+
+            setContentView(R.layout.activity_main);
+            scannerView.stopCamera();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,25 +91,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    class ZXingScannerResultHandler implements ZXingScannerView.ResultHandler{
 
-        @Override
-        public void handleResult(com.google.zxing.Result result) {
-            String resultCodeString = result.getText();
-            long resultCode = Long.parseLong(resultCodeString);
-            long liner = 884851041913L;
-            if (resultCode == liner){
-                Toast.makeText(MainActivity.this, "prave si naskenoval liner", Toast.LENGTH_LONG).show();
-                openMainActivity2();
-            }else{
-                Toast.makeText(MainActivity.this, "neurcene", Toast.LENGTH_SHORT).show();
-            }
-
-
-            setContentView(R.layout.activity_main);
-            scannerView.stopCamera();
-        }
-    }
     public void openMainActivity2(){
         Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent );
